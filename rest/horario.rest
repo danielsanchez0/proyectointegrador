@@ -1,0 +1,7 @@
+GET http://localhost:3000/horario/gethorarios
+Content-Type: application/json
+
+{
+    "year": 2023,
+    "month": 2
+}
