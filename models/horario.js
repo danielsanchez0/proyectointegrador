@@ -23,24 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Horario.init({
-    dia: {
-      type: DataTypes.STRING,
+    endDate: {
+      type: DataTypes.DATE,
       validate: {
-        notEmpty: true,
-        isIn: [['lunes', 'martes', 'miércoles', 'jueves', 'sábado', 'domingo']]
+        notEmpty: true
       }
     },
-    hora_inicio: {
-      type: DataTypes.TIME,
+    startDate: {
+      type: DataTypes.DATE,
       validate: {
         notEmpty: true,
       }
     },
-    hora_final: {
-      type: DataTypes.TIME,
-      validate: {
-        notEmpty: true,
-      }
+    rRule: {
+      type: DataTypes.STRING
     },
     espacio: {
       type: DataTypes.INTEGER,

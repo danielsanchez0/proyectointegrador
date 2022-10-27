@@ -36,12 +36,19 @@ router.post('/createsede', (req, res) => {
     })
 })
 
-router.get("/getespacios", (req, res) => {
-    const { sede_id } = req.body
+router.get('/getsedes',(req,res)=>{
+    Sede.findAll({}).then(sedes =>{
+        res.status(201).json({sedes:sedes})
+    }).catch(err =>{
+        console.log(err)
+    })
+})
+
+router.get("/getespacios/:sede_id", (req, res) => {
 
     Sede.findAll({
         where: {
-            id: sede_id
+            id:  req.params.sede_id
         },
         attributes: ["id","nombre","bloque","descripcion"],
         include: [{

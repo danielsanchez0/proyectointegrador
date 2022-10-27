@@ -8,17 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      dia: {
+      endDate: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      startDate: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      rRule: {
         type: Sequelize.STRING,
-        allowNull: false
-      },
-      hora_inicio: {
-        type: Sequelize.TIME,
-        allowNull: false
-      },
-      hora_final: {
-        type: Sequelize.TIME,
-        allowNull: false
+        allowNull: true
       },
       espacio: {
         type: Sequelize.INTEGER,
@@ -26,7 +26,8 @@ module.exports = {
           model: 'Espacios',
           key: 'id',
           as: 'espacio',
-        }
+        },
+        allowNull: true
       },
       createdAt: {
         allowNull: false,

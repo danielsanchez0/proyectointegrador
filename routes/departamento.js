@@ -23,12 +23,19 @@ router.post('/createdepartamento', (req, res) => {
     })
 })
 
-router.get('/getmaterias', (req, res) => {
-    const { departamento_id } = req.body
+router.get('/getdepartamentos', (req,res)=>{
+    Departamento.findAll({}).then(deptos =>{
+        res.status(201).json({departamentos:deptos})
+    }).catch(err =>{
+        console.log(err)
+    })
+})
 
+router.get('/getmaterias/:id', (req, res) => {
+    
     Departamento.findAll({
         where: {
-            id: departamento_id
+            id: req.params.id
         },
         attributes: ["id","nombre","descripcion"],
         include: [

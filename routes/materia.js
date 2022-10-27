@@ -8,7 +8,7 @@ router.post('/createmateria', (req, res) => {
     const { codigo, nombre, cupos_maximos, departamento_id } = req.body;
 
     if (!codigo || !nombre || !cupos_maximos || !departamento_id) {
-        return res.status(422).json({ error: "por favor, llena todos los campos" })
+        return res.status(421).json({ error: "por favor, llena todos los campos" })
     }
 
     Materia.findOne({
