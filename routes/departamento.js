@@ -17,7 +17,11 @@ router.post('/createdepartamento', (req, res) => {
     })
 
     departamento.save().then(result => {
-        res.status(201).json({ semestre: result })
+        Departamento.findAll({}).then(deptos =>{
+            res.status(201).json({departamentos:deptos})
+        }).catch(err =>{
+            console.log(err)
+        })
     }).catch(err => {
         console.log(err)
     })

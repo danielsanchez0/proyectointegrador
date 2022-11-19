@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      recurso_tipo.hasMany(models.Recurso,{
+        foreignKey: 'id',
+      })
     }
   }
   recurso_tipo.init({

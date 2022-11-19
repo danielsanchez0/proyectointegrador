@@ -15,6 +15,7 @@ var horarioRouter = require('./routes/horario');
 var espacioRouter = require('./routes/espacio');
 var materiaRouter = require('./routes/materia');
 var sedeRouter = require('./routes/sede');
+var tipoEspaciosRouter = require('./routes/tipo_espacio');
 
 /**
  * Documentación
@@ -41,6 +42,7 @@ app.use('/horario', horarioRouter);
 app.use('/espacio', espacioRouter);
 app.use('/sede', sedeRouter);
 app.use('/materia', materiaRouter);
+app.use('/tipoespacios', tipoEspaciosRouter);
 
 /**
  * Documentación
