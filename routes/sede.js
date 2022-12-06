@@ -37,7 +37,9 @@ router.post('/createsede', (req, res) => {
 })
 
 router.get('/getsedes',(req,res)=>{
-    Sede.findAll({}).then(sedes =>{
+    Sede.findAll({
+        order: [['bloque','ASC']]
+    }).then(sedes =>{
         res.status(201).json({sedes:sedes})
     }).catch(err =>{
         console.log(err)

@@ -62,4 +62,14 @@ router.post('/createsemestre', (req, res) => {
 	})
 })
 
+router.get('/getsemestres',(req,res)=>{
+    Semestre.findAll({
+        order: [['nombre','DESC']]
+    }).then(semestres =>{
+        res.status(201).json({semestres:semestres})
+    }).catch(err =>{
+        console.log(err)
+    })
+})
+
 module.exports = router;

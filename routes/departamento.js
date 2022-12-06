@@ -45,7 +45,7 @@ router.get('/getmaterias/:id', (req, res) => {
         include: [
             {
                 model: modelo.Materia,
-                attributes: ["id", "codigo", "nombre"],
+                attributes: ["id", "codigo", "nombre","cupos_maximos"],
             }
         ]
     }).then(materias => {

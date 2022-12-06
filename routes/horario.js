@@ -99,19 +99,14 @@ router.get('/gethorarios', (req, res) => {
     })
 })
 
-router.get('/gethorariosfinal', async (req, res) => {
+router.get('/gethorariosfinal/:idespacio', async (req, res) => {
     await sequelize.query(
-        "SELECT horarios.id,horarios.startDate,horarios.endDate,horarios.rRule,materias.nombre as title,espacios.nombre as notes FROM `horarios` JOIN grupo_horarios ON grupo_horarios.horario_id=horarios.id JOIN grupos ON grupo_horarios.grupo_id=grupos.id JOIN materias ON grupos.materia=materias.id JOIN espacios ON espacios.id=horarios.espacio", {
+        "SELECT Horarios.id,Horarios.startDate,Horarios.endDate,Horarios.rRule,Materias.nombre as title,Espacios.nombre as notes FROM `Horarios` JOIN Grupo_horarios ON Grupo_horarios.horario_id=Horarios.id JOIN Grupos ON Grupo_horarios.grupo_id=Grupos.id JOIN Materias ON Grupos.materia=Materias.id JOIN Espacios ON Espacios.id=Horarios.espacio WHERE Espacios.id=:idespacio", {
+        replacements: { idespacio: req.params.idespacio },
         type: QueryTypes.SELECT,
         raw: false
     }
     ).then(horario => {
-
-        /*horario.forEach(element => {
-            element.startDate = moment(element.startDate).format('DD/MM/YYYY h:mm:ss');
-            element.endDate = moment(element.endDate).format('DD/MM/YYYY h:mm:ss');
-        });*/
-
         console.log(horario)
         res.status(200).json({ horario })
     }).catch(err => {

@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     departamento_id: DataTypes.INTEGER
   }, {
     sequelize,
-    tableName: "materias",
+    tableName: "Materias",
     modelName: 'Materia',
   });
   return Materia;
